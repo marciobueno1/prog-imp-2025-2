@@ -14,7 +14,7 @@ public class Exemplo06 {
     System.out.println("A soma dos três valores é " + soma);
     A[4] = 100;
     System.out.println("Impressão do vetor 1 em cada linha");
-    for (int i = 0; i < v.length; i += 1) {
+    for (int i = 0; i < A.length; i += 1) {
       System.out.println(A[i]);
     }
   }

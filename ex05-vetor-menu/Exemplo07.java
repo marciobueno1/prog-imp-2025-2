@@ -9,8 +9,8 @@ public class Exemplo07 {
     int[] vetorSoma = new int[QTD];
     int opcao, tam2 = 0;
     boolean numeros1Preenchido = false;
-    boolean numeros2Preenchido = false;
-    boolean vetorSomaPreenchido = false;
+    // boolean numeros2Preenchido = false;
+    // boolean vetorSomaPreenchido = false;
 
     do {
       System.out.println("\n\nMENU");
