@@ -4,8 +4,8 @@ public class Exemplo09 {
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Produto produto1 = new Produto();
-        Produto produto2 = new Produto();
+        Produt produto1 = new Produt();
+        Produt produto2 = new Produt();
 
         System.out.println("### Cadastro de Produtos ###");
 
@@ -25,7 +25,7 @@ public class Exemplo09 {
         input.close();
     }
 
-    public static void preencher(Produto produto) {
+    public static void preencher(Produt produto) {
         System.out.println("Digite o título do produto: ");
         produto.titulo = input.nextLine();
 
@@ -41,7 +41,7 @@ public class Exemplo09 {
         input.nextLine(); // para remover o ENTER da digitação do int referente a qtdEstoque
     }
 
-    public static void imprimir(Produto produto) {
+    public static void imprimir(Produt produto) {
         System.out.println("\n--- Detalhes do Produto ---");
         System.out.println("Título: " + produto.titulo);
         System.out.println("Descrição: " + produto.descricao);

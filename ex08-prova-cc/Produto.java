@@ -1,6 +1,6 @@
 public class Produto {
-    String titulo;
+    int id;
     String descricao;
-    double precoUnitario;
     int qtdEstoque;
+    double vlrUnit;
 }
