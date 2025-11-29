@@ -69,6 +69,7 @@ public class ResolucaoProva {
         v[pos].qtdEstoque = input.nextInt();
         alterou = true;
       }
+      input.nextLine(); // Limpar buffer final
 
       // Alterar Valor
       System.out.println("Deseja alterar o valor (Atual: " + v[pos].vlrUnit + ")? (S/N)");
@@ -213,20 +214,82 @@ public class ResolucaoProva {
         Produto[] produtos = new Produto[10];
         Venda[] vendas = new Venda[10];
         
-        produtos[0] = new Produto(); produtos[0].id = 1; produtos[0].descricao = "Refrigerante 2L"; produtos[0].qtdEstoque = 100; produtos[0].vlrUnit = 8.79;
+        produtos[0] = new Produto(); produtos[0].id = 4; produtos[0].descricao = "Refrigerante 2L"; produtos[0].qtdEstoque = 100; produtos[0].vlrUnit = 8.79;
         produtos[1] = new Produto(); produtos[1].id = 2; produtos[1].descricao = "Salgado de Queijo"; produtos[1].qtdEstoque = 50; produtos[1].vlrUnit = 5.25;
-        produtos[2] = new Produto(); produtos[2].id = 3; produtos[2].descricao = "Suco de Uva 1L"; produtos[2].qtdEstoque = 20; produtos[2].vlrUnit = 10.58;
-        produtos[3] = new Produto(); produtos[3].id = 4; produtos[3].descricao = "Bolo"; produtos[3].qtdEstoque = 10; produtos[3].vlrUnit = 15.00;
+        produtos[2] = new Produto(); produtos[2].id = 1; produtos[2].descricao = "Suco de Uva 1L"; produtos[2].qtdEstoque = 20; produtos[2].vlrUnit = 10.58;
+        produtos[3] = new Produto(); produtos[3].id = 3; produtos[3].descricao = "Bolo"; produtos[3].qtdEstoque = 10; produtos[3].vlrUnit = 15.00;
         
         int tamProdutos = 4;
         int tamVendas = 0;
 
+        bubbleSortPorDescricao(produtos, tamProdutos);
+        listar(produtos, tamProdutos);
+
+        bubbleSortPorID(produtos, tamProdutos);
+        listar(produtos, tamProdutos);
+
         // Testando Venda (Q4)
+        venda(produtos, tamProdutos, vendas, tamVendas);
+        tamVendas++; // Incrementa após a venda
         venda(produtos, tamProdutos, vendas, tamVendas);
         tamVendas++; // Incrementa após a venda
 
         // Testando Relatório (Q5)
         System.out.println("\n--- RELATÓRIO ---");
         relatorio(produtos, tamProdutos, vendas, tamVendas);
+    }
+
+    // ========================================================================
+    // BUBBLE SORT PARA PRODUTOS POR ID
+    // ========================================================================
+    public static void bubbleSortPorID(Produto[] v, int tam) {
+      Produto aux;
+      boolean trocou = true;
+      int fim = tam - 2, posUltimaTroca = tam - 2;
+      while (trocou) {
+        trocou = false;
+        for (int i = 0; i <= fim; i += 1) {
+          if (v[i].id > v[i + 1].id) {
+            trocou = true;
+            aux = v[i];
+            v[i] = v[i + 1];
+            v[i + 1] = aux;
+            posUltimaTroca = i;
+          }
+        }
+        fim = posUltimaTroca - 1;
+      }
+    }
+
+    // ========================================================================
+    // BUBBLE SORT PARA PRODUTOS POR DESCRIÇÃO
+    // ========================================================================
+    public static void bubbleSortPorDescricao(Produto[] v, int tam) {
+      Produto aux;
+      boolean trocou = true;
+      int fim = tam - 2, posUltimaTroca = tam - 2;
+      while (trocou) {
+        trocou = false;
+        for (int i = 0; i <= fim; i += 1) {
+          if (v[i].descricao.compareTo(v[i + 1].descricao) > 0) {
+            trocou = true;
+            aux = v[i];
+            v[i] = v[i + 1];
+            v[i + 1] = aux;
+            posUltimaTroca = i;
+          }
+        }
+        fim = posUltimaTroca - 1;
+      }
+    }
+
+    // ========================================================================
+    // LISTAR TODOS OS PRODUTOS
+    // ========================================================================
+    public static void listar(Produto[] v, int tam) {
+      System.out.println("\nLISTAGEM DOS PRODUTOS\n");
+      for (int i = 0; i < tam; i += 1) {
+        System.out.printf("%2d %s\n", v[i].id, v[i].descricao);
+      }
     }
 }
